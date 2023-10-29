@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../components/ui/Card";
 import CustomFilter from "../components/CustomFilter";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const HomeScreen = () => {
+  let newParams = new URLSearchParams(window.location.search);
+  const navigate = useNavigate();
+
   const [searchInp, setSearchInp] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedCluster, setSelectedCluster] = useState("all");
@@ -15,6 +19,21 @@ const HomeScreen = () => {
   const [uniqueCity, setUniqueCity] = useState([]);
   const [uniqueCluster, setUniqueCluster] = useState([]);
   const uniqueSpace = [50, 500, 1000];
+
+  useEffect(() => {
+    newParams = new URLSearchParams(window.location.search);
+    console.log(newParams.get("city"));
+
+    newParams.has("city")
+      ? setSelectedCity(newParams.get("city"))
+      : setSelectedCity("all");
+    newParams.has("cluster")
+      ? setSelectedCluster(newParams.get("cluster"))
+      : setSelectedCluster("all");
+    newParams.has("space_available")
+      ? setSelectedSpace(newParams.get("space_available"))
+      : setSelectedSpace("all");
+  }, [window.location.href]);
 
   useEffect(() => {
     let allUniqueCities = [];
@@ -54,19 +73,28 @@ const HomeScreen = () => {
       );
 
       if (selectedCity !== "all") {
+        newParams.set("city", selectedCity);
         newData = newData.filter((el) => el.city === selectedCity);
+      } else {
+        newParams.delete("city");
       }
 
       if (selectedCluster !== "all") {
+        newParams.set("cluster", selectedCluster);
         newData = newData.filter((el) => el.cluster === selectedCluster);
+      } else {
+        newParams.delete("cluster");
       }
 
       if (selectedSpace !== "all") {
+        newParams.set("space_available", selectedSpace);
         newData = newData.filter((el) => el.space_available <= selectedSpace);
+      } else {
+        newParams.delete("space_available");
       }
 
-      // const newURL = `${window.location.pathname}?city=${selectedCity}&cluster=${selectedCluster}&space=${selectedSpace}`;
-      // window.history.pushState({}, "", newURL);
+      // const newURL = `${window.location.pathname}?${newParams.toString()}`;
+      navigate(`/?${newParams.toString()}`, { replace: false });
 
       setAllData(newData);
     }, 1000);
