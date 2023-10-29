@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
+.themeText{
+    @apply text-black dark:text-white
+}
+
+.themeBg{
+    @apply bg-white dark:bg-dark-grey
+}
+
+.navbar{
+    @apply h-[60px] w-full fixed top-0 left-0 z-10 themeBg px-4 sm:px-6 py-2 flex items-center justify-between shadow-xl
+}
+
+.gridLayout{
+    @apply max-w-[1600px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6
+}
+
+.inputStyles{
+ @apply w-full rounded-lg outline-none bg-white text-black font-medium text-sm sm:text-base px-2 sm:px-4 py-1 sm:py-2 border-[2px] border-solid border-black/[0.4]
+}
+
+.labelStyle{
+    @apply font-bold text-sm sm:text-base mb-1 sm:mb-2 mt-2 sm:mt-4
+}
+
+.extraData{
+    @apply w-full flex sm:flex-col gap-2 justify-between sm:justify-start items-center
+}
+.extraTitle{
+    @apply text-base sm:text-lg font-bold themeText
+}
+
+.btnStyle{
+    @apply w-full px-4 py-2 text-white font-bold text-lg bg-[#1e96fc] rounded-lg
+}
+
+.darkBoxBorder{
+    @apply border-[2px] border-solid border-[#e9ecef]/[0.1]
+}
