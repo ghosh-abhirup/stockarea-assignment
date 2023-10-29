@@ -23,6 +23,9 @@ const HomeScreen = () => {
   useEffect(() => {
     newParams = new URLSearchParams(window.location.search);
     // console.log(newParams.get("city"));
+    newParams.has("search")
+      ? setSearchInp(newParams.get("search"))
+      : setSearchInp("");
 
     newParams.has("city")
       ? setSelectedCity(newParams.get("city"))
@@ -71,6 +74,12 @@ const HomeScreen = () => {
       let newData = warehouseArr?.filter((el) =>
         el.name.includes(searchInp.trim())
       );
+
+      if (searchInp.length == 0) {
+        newParams.delete("search");
+      } else {
+        newParams.set("search", searchInp);
+      }
 
       if (selectedCity !== "all") {
         newParams.set("city", selectedCity);
