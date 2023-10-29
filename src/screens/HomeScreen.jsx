@@ -22,7 +22,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     newParams = new URLSearchParams(window.location.search);
-    console.log(newParams.get("city"));
+    // console.log(newParams.get("city"));
 
     newParams.has("city")
       ? setSelectedCity(newParams.get("city"))
