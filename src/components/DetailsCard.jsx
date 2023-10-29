@@ -10,14 +10,15 @@ const DetailsCard = ({ warehouseData }) => {
   const dispatch = useDispatch();
 
   const editObjectHandler = (name, cluster, city, space, isLive) => {
+    // console.log("SPace before fn ", space);
     dispatch(
       editWarehouse({
         id: warehouseData.id,
-        name,
-        city,
-        spaceAvailbale: space,
-        cluster,
-        isLive,
+        name: name,
+        city: city,
+        spaceAvailable: space,
+        cluster: cluster,
+        isLive: isLive,
       })
     );
   };

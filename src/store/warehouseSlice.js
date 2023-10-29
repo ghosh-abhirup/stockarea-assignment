@@ -10,7 +10,7 @@ export const warehouseSlice = createSlice({
     editWarehouse: (state, action) => {
       const { id, name, city, spaceAvailable, cluster, isLive } =
         action.payload;
-
+      // console.log("Space i/p = ", spaceAvailable);
       // Find the index of the warehouse to be edited
       const index = state.warehouseArr.findIndex(
         (warehouse) => warehouse.id === id
@@ -26,6 +26,8 @@ export const warehouseSlice = createSlice({
           cluster,
           is_live: isLive,
         };
+
+        // console.log("Updated warehouse = ", updatedWarehouse);
 
         // Create a new array with the updated warehouse
         const updatedWarehouseArr = [...state.warehouseArr];

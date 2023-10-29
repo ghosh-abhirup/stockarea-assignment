@@ -5,21 +5,21 @@ const EditDetails = ({ open, onClose, data, edit }) => {
   const [name, setName] = useState(data?.name);
   const [cluster, setCluster] = useState(data?.cluster);
   const [city, setCity] = useState(data?.city);
-  const [space, setSpace] = useState(data?.space_available);
+  const [space, setSpace] = useState(parseInt(data?.space_available));
   const [isLive, setIsLive] = useState(data?.is_live);
 
   const closeModal = () => {
     setName(data?.name);
     setCluster(data?.cluster);
     setCity(data?.city);
-    setSpace(data?.space_available);
+    setSpace(parseInt(data?.space_available));
     setIsLive(data?.is_live);
 
     onClose();
   };
 
   const editHandler = () => {
-    edit(name, cluster, city, space, isLive);
+    edit(name, cluster, city, parseInt(space), isLive);
 
     closeModal();
   };
