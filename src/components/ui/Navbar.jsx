@@ -17,7 +17,7 @@ const Navbar = () => {
         className="text-base sm:text-lg themeText font-bold cursor-pointer"
         onClick={() => navigate("/")}
       >
-        Stockarea Assignment
+        Warehouse Manager
       </p>
       <div className="flex items-center gap-2 sm:gap-4">
         <p className="font-semibold text-xs sm:text-base themeText">
