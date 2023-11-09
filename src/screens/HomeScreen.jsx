@@ -113,6 +113,27 @@ const HomeScreen = () => {
     };
   }, [searchInp, selectedCity, selectedCluster, selectedSpace]);
 
+  useEffect(() => {
+    let allUniqueCities = [];
+    let allUniqueClusters = [];
+
+    allData?.forEach((element) => {
+      if (!allUniqueCities.includes(element.city)) {
+        allUniqueCities.push(element.city);
+      }
+
+      if (!allUniqueClusters.includes(element.cluster)) {
+        allUniqueClusters.push(element.cluster);
+      }
+    });
+
+    console.log("All = ", allData);
+    console.log(allUniqueCities);
+
+    setUniqueCity(allUniqueCities);
+    setUniqueCluster(allUniqueClusters);
+  }, [allData]);
+
   return (
     <div className="py-5 px-4 sm:px-6 flex flex-col items-center justify-center">
       <div className="w-full max-w-[1300px] flex flex-col md:flex-row justify-between items-center">

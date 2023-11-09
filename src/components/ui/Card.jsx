@@ -17,11 +17,13 @@ const Card = ({ data }) => {
           className="w-full min-w-[300px] p-4 shadow-lg dark:shadow-gray-500/40 bg-white dark:bg-black rounded-lg flex flex-col gap-2 justify-between cursor-pointer hover:scale-105 transition-all ease-in-out dark:darkBoxBorder"
           onClick={handleNavigate}
         >
-          <div className="flex items-center justify-between">
+          <div className="">
             <p className="text-lg w-full truncate font-bold themeText">
               {data.name}
             </p>
-            {/* <Tag data={data?.code} /> */}
+            <p className="text-lg w-full truncate font-bold themeText">
+              {data.cluster}
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <FontAwesomeIcon
